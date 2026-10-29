@@ -224,3 +224,87 @@ textarea:focus-visible{
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
 }
+#gallery-section {
+    max-width: 900px;
+    margin: 0 auto 25px;
+    padding: 20px;
+    background-color: var(--color-white);
+    border-radius: 10px;
+}
+.gallery-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.gallery-controls button {
+    margin-top: 0;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+}
+.gallery-grid.hidden {
+    display: none;
+}
+.gallery-item {
+    margin: 0;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.gallery-thumb {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: var(--color-background);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--color-main);
+}
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.gallery-item figcaption {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--color-text);
+}
+.gallery-item .caption-text {
+    flex: 1;
+    word-break: break-word;
+}
+.gallery-item .delete-btn {
+    margin-top: 0;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    background-color: #c0392b;
+    color: #fff;
+    border-radius: 6px;
+}
+.gallery-item .delete-btn:hover {
+    opacity: 0.85;
+}
+.empty-msg {
+    text-align: center;
+    color: var(--color-main);
+    padding: 20px;
+    margin: 0;
+}
+.empty-msg.hidden {
+    display: none;
+}
