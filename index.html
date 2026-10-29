@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Портфолио фотографа Фёдора Вознесенского: фотопроекты, настройки съёмки, визуальные истории">
+    <title>Портфолио фотографа - Вознесенский Фёдор</title>
+        <link rel="stylesheet" href="style.css">
+
+<style>
+    aside a {
+        color: var(--color-accent);
+
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+
+    <header>
+    <h1>Вознесенский Фёдор</h1>
+    <p class="subtitle">Портфолио фотографа</p>
+    <nav class="mainnav">
+        <ul>
+            <li><a href="#projects">Проекты</a></li>
+            <li><a href="#settings">Настройки</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+    <div class="photo-wrapper" style="z-index: 10;">
+        <img src="img/avatar.jpg" alt="Портрет автора" width="200" height="200">
+    </div>
+</header>
+
+    <main>
+        <section>
+            <h2>Навыки</h2>
+            <ul>
+                <li>Композиция кадра</li>
+                <li>Работа со светом</li>
+                <li>Постобработка (Adobe Lightroom, Photoshop)</li>
+                <li>Цветокоррекция</li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Проекты</h2>
+            <div class="projects-flex">
+                <article class="project-card">
+                    <img src="img/project-1.jpg" alt="Безлюдная ночная городская улица">
+                    <h3>«Городской пейзаж ночью»</h3>
+                    <p>Санкт Петербург</p>
+                </article>
+                  <article class="project-card">
+                    <img src="img/project-2.jpg" alt="Уральские горы в утренней дымке">
+                    <h3>«Тишина гор»</h3>
+                    <p>Урал</p>
+                </article>
+                  <article class="project-card">
+                    <img src="img/project-3.jpg" alt="Проспект Притомский днём, поток машин и высотные дома">
+                    <h3>«Проспект Притомский днём»</h3>
+                    <p>Кемерово</p>
+                </article>
+                  <article class="project-card">
+                    <img src="img/project-4.jpg" alt="Макросъёмка морской гальки с каплями воды">
+                    <h3>«Море в деталях»</h3>
+                    <p>Сочи</p>
+                </article>
+            </div>
+        </section>
+        <section id="settings">
+    <h2>Настройки съёмки</h2>
+    <div class="settings-grid">
+
+        <article class="setting-card">
+            <span class="setting-icon" aria-hidden="true">🌗</span>
+            <span class="setting-label">ISO</span>
+            <span class="setting-value">400</span>
+        </article>
+        <article class="setting-card">
+            <span class="setting-icon" aria-hidden="true">⏱️</span>
+            <span class="setting-label">Выдержка</span>
+            <span class="setting-value">1/125 с</span>
+        </article>
+        <article class="setting-card">
+            <span class="setting-icon" aria-hidden="true">🔘</span>
+            <span class="setting-label">Диафрагма</span>
+            <span class="setting-value">f/2.8</span>
+        </article>
+        <article class="setting-card">
+            <span class="setting-icon" aria-hidden="true">📏</span>
+            <span class="setting-label">Фокусное расстояние</span>
+            <span class="setting-value">35 mm</span>
+        </article>
+        <article class="setting-card">
+            <span class="setting-icon" aria-hidden="true">⚖️</span>
+            <span class="setting-label">Баланс белого</span>
+            <span class="setting-value">5200 K</span>
+        </article>
+        <article class="setting-card">
+            <span class="setting-icon" aria-hidden="true">📸</span>
+            <span class="setting-label">Режим</span>
+            <span class="setting-value">Manual</span>
+        </article>
+        </div>
+        </section>        
+        <section id="contact">
+        <h2>Свяжитесь со мной</h2>
+        <form action="#" method="post">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" placeholder="Введите ваше имя" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" rows="4" placeholder="Введите сообщение" required></textarea>
+
+            <button type="submit">Отправить</button>
+        </form>
+        </section>
+        
+    </main>
+    <aside>
+    <h3>Любимое направление</h3>
+    <p>Пейзажная фотография</p>
+    <a href="https://clck.ru/3VnMZt">Моё портфолио</a>
+</aside>
+
+    <footer>
+        <p>© 2026 Вознесенский Фёдор</p>
+    </footer>
+<script src="script.js"></script>
+</body>
+</html>
