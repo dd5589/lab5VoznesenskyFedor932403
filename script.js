@@ -1,3 +1,18 @@
+const GALLERY_KEY = 'portfolio_gallery_photos';
+const THEME_KEY = 'portfolio_theme';
+const VIS_KEY = 'portfolio_gallery_visible';
+const galleryEl = document.getElementById('gallery');
+const addPhotoBtn = document.getElementById('add-photo-btn');
+const toggleGalleryBtn = document.getElementById('toggle-gallery-btn');
+const themeToggleBtn = document.getElementById('theme-toggle');
+const emptyGalleryMsg = document.getElementById('empty-gallery-msg');
+
+function initGallery() {
+    console.log('✅ initGallery запущена');
+}
+
+document.addEventListener('DOMContentLoaded', initGallery);
+
 const username = prompt("Как вас зовут?");
 if (username) {
   alert("Привет, " + username + "!" + " Посмотри статистику фото!");
