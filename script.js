@@ -31,6 +31,14 @@ function checkGalleryElements() {
 
 document.addEventListener('DOMContentLoaded', initGallery);
 
+function savePhotos() {
+    try {
+        localStorage.setItem(GALLERY_KEY, JSON.stringify(galleryPhotos));
+    } catch (e) {
+        console.warn('Ошибка сохранения фото:', e);
+    }
+}
+
 const username = prompt("Как вас зовут?");
 if (username) {
   alert("Привет, " + username + "!" + " Посмотри статистику фото!");
