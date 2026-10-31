@@ -9,6 +9,7 @@ const emptyGalleryMsg = document.getElementById('empty-gallery-msg');
 
 function initGallery() {
     if (!checkGalleryElements()) return;
+    loadGalleryState();
     console.log('✅ initGallery запущена');
 }
 
@@ -36,6 +37,35 @@ function savePhotos() {
         localStorage.setItem(GALLERY_KEY, JSON.stringify(galleryPhotos));
     } catch (e) {
         console.warn('Ошибка сохранения фото:', e);
+    }
+}
+
+function loadGalleryState() {
+    try {
+        const raw = localStorage.getItem(GALLERY_KEY);
+        if (raw) {
+            const parsed = JSON.parse(raw);
+            if (Array.isArray(parsed)) galleryPhotos = parsed;
+        }
+    } catch (e) {
+        console.warn('Ошибка чтения фото:', e);
+        galleryPhotos = [];
+    }
+
+    try {
+        if (localStorage.getItem(THEME_KEY) === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+    } catch (e) {
+        console.warn('Ошибка чтения темы:', e);
+    }
+
+    try {
+        if (localStorage.getItem(VIS_KEY) === 'false') {
+            galleryVisible = false;
+        }
+    } catch (e) {
+        console.warn('Ошибка чтения видимости:', e);
     }
 }
 
