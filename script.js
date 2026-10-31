@@ -8,7 +8,25 @@ const themeToggleBtn = document.getElementById('theme-toggle');
 const emptyGalleryMsg = document.getElementById('empty-gallery-msg');
 
 function initGallery() {
+    if (!checkGalleryElements()) return;
     console.log('✅ initGallery запущена');
+}
+
+let galleryPhotos  = [];
+let galleryVisible = true;
+
+function checkGalleryElements() {
+    const missing = [];
+    if (!galleryEl) missing.push('#gallery');
+    if (!addPhotoBtn) missing.push('#add-photo-btn');
+    if (!toggleGalleryBtn) missing.push('#toggle-gallery-btn');
+    if (!themeToggleBtn) missing.push('#theme-toggle');
+    if (!emptyGalleryMsg) missing.push('#empty-gallery-msg');
+    if (missing.length) {
+        console.error('Не найдены элементы:', missing.join(', '));
+        return false;
+    }
+    return true;
 }
 
 document.addEventListener('DOMContentLoaded', initGallery);
