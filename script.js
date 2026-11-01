@@ -1,3 +1,10 @@
+const username = prompt("Как вас зовут?");
+if (username) {
+  alert("Привет, " + username + "!" + " Посмотри статистику фото!");
+} else {
+  alert("Привет, аноним!");
+}
+
 const GALLERY_KEY = 'portfolio_gallery_photos';
 const THEME_KEY = 'portfolio_theme';
 const VIS_KEY = 'portfolio_gallery_visible';
@@ -215,13 +222,6 @@ function removeGalleryPhoto(id) {
     galleryPhotos.splice(idx, 1);
     savePhotos();
     renderGallery();
-}
-
-const username = prompt("Как вас зовут?");
-if (username) {
-  alert("Привет, " + username + "!" + " Посмотри статистику фото!");
-} else {
-  alert("Привет, аноним!");
 }
 
 const photos = [120, 200, 170, 420, 50, 220];
