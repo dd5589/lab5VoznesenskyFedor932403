@@ -95,7 +95,7 @@ function loadGalleryState() {
 
 function updateEmptyMessage() {
     if (!emptyGalleryMsg) return;
-    if (galleryPhotos.length === 0) {
+    if (galleryPhotos.length === 0 && galleryVisible) {
         emptyGalleryMsg.classList.remove('hidden');
     } else {
         emptyGalleryMsg.classList.add('hidden');
@@ -117,6 +117,7 @@ function updateGalleryVisibility() {
         galleryEl.classList.add('hidden');
         if (toggleGalleryBtn) toggleGalleryBtn.textContent = 'Показать галерею';
     }
+    updateEmptyMessage();
 }
 
 function createGalleryItem(photo) {
