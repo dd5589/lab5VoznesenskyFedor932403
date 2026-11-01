@@ -16,6 +16,25 @@ function initGallery() {
     renderGallery();
     addPhotoBtn.addEventListener('click', addGalleryPhoto);
     console.log('✅ initGallery запущена');
+    toggleGalleryBtn.addEventListener('click', () => {
+        galleryVisible = !galleryVisible;
+        try {
+            localStorage.setItem(VIS_KEY, String(galleryVisible));
+        } catch (e) {
+            console.warn('Ошибка сохранения видимости:', e);
+        }
+        updateGalleryVisibility();
+    });
+    themeToggleBtn.addEventListener('click', () => {
+        const isDark = document.body.classList.toggle('dark-theme');
+        try {
+            localStorage.setItem(THEME_KEY, isDark ? 'dark' : 'light');
+        } catch (e) {
+            console.warn('Ошибка сохранения темы:', e);
+        }
+        updateThemeButton();
+    });
+    console.log('✅ initGallery запущена');
 }
 
 let galleryPhotos  = [];
