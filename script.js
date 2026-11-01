@@ -14,6 +14,7 @@ function initGallery() {
     updateThemeButton();
     updateGalleryVisibility();
     renderGallery();
+    addPhotoBtn.addEventListener('click', addGalleryPhoto);
     console.log('✅ initGallery запущена');
 }
 
@@ -125,8 +126,18 @@ function createGalleryItem(photo) {
     const captionText = document.createElement('span');
     captionText.className = 'caption-text';
     captionText.textContent = photo.caption || 'Без подписи';
-    figcaption.appendChild(captionText);
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = '✕';
+    deleteBtn.title = 'Удалить фото';
+    deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        removeGalleryPhoto(photo.id);
+    });
 
+    figcaption.appendChild(captionText);
+    figcaption.appendChild(deleteBtn);
     figure.appendChild(thumb);
     figure.appendChild(figcaption);
     return figure;
@@ -173,6 +184,17 @@ function addGalleryPhoto() {
 
     const added = galleryEl.querySelector(`[data-id="${newPhoto.id}"]`);
     if (added) added.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function removeGalleryPhoto(id) {
+    const idx = galleryPhotos.findIndex(p => p.id === id);
+    if (idx === -1) {
+        console.warn('Фото не найдено:', id);
+        return;
+    }
+    galleryPhotos.splice(idx, 1);
+    savePhotos();
+    renderGallery();
 }
 
 const username = prompt("Как вас зовут?");
