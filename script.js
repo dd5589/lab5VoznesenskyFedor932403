@@ -13,6 +13,7 @@ function initGallery() {
     updateEmptyMessage();
     updateThemeButton();
     updateGalleryVisibility();
+    renderGallery();
     console.log('✅ initGallery запущена');
 }
 
@@ -129,6 +130,49 @@ function createGalleryItem(photo) {
     figure.appendChild(thumb);
     figure.appendChild(figcaption);
     return figure;
+}
+
+function renderGallery() {
+    if (!galleryEl) return;
+    galleryEl.innerHTML = '';
+    galleryPhotos.forEach(p => galleryEl.appendChild(createGalleryItem(p)));
+    updateEmptyMessage();
+    updateGalleryVisibility();
+
+    const captions = document.querySelectorAll('#gallery figcaption');
+    console.log('Подписей в галерее:', captions.length);
+}
+
+function addGalleryPhoto() {
+    let url = prompt('URL изображения (пусто — заглушка):', '');
+    if (url === null) return;
+    url = url.trim();
+
+    let caption = prompt('Подпись к фото:', 'Новый кадр');
+    if (caption === null) return;
+    caption = caption.trim() || 'Без подписи';
+
+    if (url) {
+        try {
+            new URL(url);
+        } catch (e) {
+            alert('⚠️ Некорректный URL. Будет заглушка.');
+            url = '';
+        }
+    }
+
+    const newPhoto = {
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+        url,
+        caption
+    };
+
+    galleryPhotos.push(newPhoto);
+    savePhotos();
+    renderGallery();
+
+    const added = galleryEl.querySelector(`[data-id="${newPhoto.id}"]`);
+    if (added) added.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 const username = prompt("Как вас зовут?");
