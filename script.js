@@ -10,6 +10,8 @@ const emptyGalleryMsg = document.getElementById('empty-gallery-msg');
 function initGallery() {
     if (!checkGalleryElements()) return;
     loadGalleryState();
+    updateEmptyMessage();
+    updateThemeButton();
     console.log('✅ initGallery запущена');
 }
 
@@ -68,6 +70,22 @@ function loadGalleryState() {
         console.warn('Ошибка чтения видимости:', e);
     }
 }
+
+function updateEmptyMessage() {
+    if (!emptyGalleryMsg) return;
+    if (galleryPhotos.length === 0) {
+        emptyGalleryMsg.classList.remove('hidden');
+    } else {
+        emptyGalleryMsg.classList.add('hidden');
+    }
+}
+
+function updateThemeButton() {
+    if (!themeToggleBtn) return;
+    const isDark = document.body.classList.contains('dark-theme');
+    themeToggleBtn.textContent = isDark ? '☀️ Светлая тема' : '🌙 Тёмная тема';
+}
+
 
 const username = prompt("Как вас зовут?");
 if (username) {
