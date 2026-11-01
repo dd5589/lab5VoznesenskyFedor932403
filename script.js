@@ -12,6 +12,7 @@ function initGallery() {
     loadGalleryState();
     updateEmptyMessage();
     updateThemeButton();
+    updateGalleryVisibility();
     console.log('✅ initGallery запущена');
 }
 
@@ -83,9 +84,52 @@ function updateEmptyMessage() {
 function updateThemeButton() {
     if (!themeToggleBtn) return;
     const isDark = document.body.classList.contains('dark-theme');
-    themeToggleBtn.textContent = isDark ? '☀️ Светлая тема' : '🌙 Тёмная тема';
+    themeToggleBtn.textContent = isDark ? 'Светлая тема' : 'Тёмная тема';
 }
 
+function updateGalleryVisibility() {
+    if (!galleryEl) return;
+    if (galleryVisible) {
+        galleryEl.classList.remove('hidden');
+        if (toggleGalleryBtn) toggleGalleryBtn.textContent = 'Скрыть галерею';
+    } else {
+        galleryEl.classList.add('hidden');
+        if (toggleGalleryBtn) toggleGalleryBtn.textContent = 'Показать галерею';
+    }
+}
+
+function createGalleryItem(photo) {
+    const figure = document.createElement('figure');
+    figure.className = 'gallery-item';
+    figure.dataset.id = photo.id;
+
+    const thumb = document.createElement('div');
+    thumb.className = 'gallery-thumb';
+
+    if (photo.url) {
+        const img = document.createElement('img');
+        img.src = photo.url;
+        img.alt = photo.caption || 'Фото';
+        img.loading = 'lazy';
+        img.addEventListener('error', () => {
+            img.remove();
+            thumb.textContent = '🖼️';
+        });
+        thumb.appendChild(img);
+    } else {
+        thumb.textContent = '🖼️';
+    }
+
+    const figcaption = document.createElement('figcaption');
+    const captionText = document.createElement('span');
+    captionText.className = 'caption-text';
+    captionText.textContent = photo.caption || 'Без подписи';
+    figcaption.appendChild(captionText);
+
+    figure.appendChild(thumb);
+    figure.appendChild(figcaption);
+    return figure;
+}
 
 const username = prompt("Как вас зовут?");
 if (username) {
