@@ -308,3 +308,12 @@ textarea:focus-visible{
 .empty-msg.hidden {
     display: none;
 }
+body.dark-theme {
+    --color-main: #a4afbd;
+    --color-accent: #4a9eff;
+    --color-text: #e0e5ec;
+    --color-background: #1a1d22;
+    --color-white: #262a30;
+    --color-border: #3a3f46;
+    --color-visited: #b896e0;
+}
