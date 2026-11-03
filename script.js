@@ -215,13 +215,15 @@ function addGalleryPhoto() {
 
 function removeGalleryPhoto(id) {
     const idx = galleryPhotos.findIndex(p => p.id === id);
-    if (idx === -1) {
-        console.warn('Фото не найдено:', id);
-        return;
-    }
+    if (idx === -1) { console.warn('Фото не найдено:', id); return; }
     galleryPhotos.splice(idx, 1);
     savePhotos();
-    renderGallery();
+
+    const el = galleryEl.querySelector(`[data-id="${id}"]`);
+    if (el) el.remove();
+
+    updateEmptyMessage();
+    updateGalleryVisibility();
 }
 
 const photos = [120, 200, 170, 420, 50, 220];
